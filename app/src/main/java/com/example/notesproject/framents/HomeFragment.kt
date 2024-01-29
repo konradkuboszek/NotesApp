@@ -89,7 +89,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
         return false
     }
     private fun searchNote(query : String?){
-        val searechQuery = "%$query"
+        val searechQuery = "%$query%"
 
         noteViewModel.searchNote(searechQuery).observe(this){list ->
             noteAdapter.differ.submitList(list)
