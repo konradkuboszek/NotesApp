@@ -2,6 +2,7 @@ package com.example.notesproject.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.notesproject.database.Category
 import com.example.notesproject.database.Note
@@ -29,9 +30,7 @@ class NoteViewModel(app: Application, private val notesRepository: NotesReposito
         viewModelScope.launch {
             notesRepository.insertCategory(category)
         }
-    fun getCategoriesNames()=
-        viewModelScope.launch {
-            notesRepository.getAllCategoriesNames()
-        }
-
+    fun getCategoriesNames() : LiveData<List<String>> {
+        return notesRepository.getAllCategoriesNames()
+    }
 }

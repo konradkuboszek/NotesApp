@@ -9,6 +9,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -73,6 +75,19 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
 
         binding.editNoteTitleEditText.setText(currentNote.noteTitle)
         binding.editNoteContentEditText.setText(currentNote.noteContent)
+        val categoryDao = noteViewModel.getCategoriesNames()
+
+        val spinner : Spinner = binding.editNoteCategorySpinner
+
+        noteViewModel.getCategoriesNames().observe(viewLifecycleOwner, { categories ->
+            val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = arrayAdapter
+            spinner.setSelection(currentNote.category)
+        }
+
+        )
+
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
