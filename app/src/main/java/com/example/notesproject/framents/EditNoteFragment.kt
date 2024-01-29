@@ -112,8 +112,9 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
     private fun saveNote(){
         val noteTitle = binding.editNoteTitleEditText.text.toString()
         val noteContent = binding.editNoteContentEditText.text.toString()
+        val noteCategory = binding.editNoteCategorySpinner.selectedItemPosition
         if(noteTitle.isNotEmpty()){
-            val note = Note(currentNote.id,noteTitle,noteContent,0)
+            val note = Note(currentNote.id,noteTitle,noteContent,noteCategory)
             noteViewModel.updateNote(note)
             view?.findNavController()?.popBackStack(R.id.homeFragment, false)
 

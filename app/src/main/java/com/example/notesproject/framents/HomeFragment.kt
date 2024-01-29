@@ -16,6 +16,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notesproject.MainActivity
 import com.example.notesproject.R
@@ -107,7 +108,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.clear()
         menuInflater.inflate(R.menu.home_menu,menu)
-
         val menuSearch = menu.findItem(R.id.searchMenu).actionView as SearchView
         menuSearch.isSubmitButtonEnabled = false
         menuSearch.setOnQueryTextListener(this)
@@ -118,7 +118,14 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
         homeBinding=null
     }
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        TODO("Not yet implemented")
+        return when(menuItem.itemId){
+            R.id.settingsMenu -> {
+                findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
+                true
+            } else -> false
+
+
+        }
     }
 
 

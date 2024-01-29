@@ -6,4 +6,9 @@
         android:title="searchMenu"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView"/>
+    <item
+        android:id="@+id/settingsMenu"
+        android:title="goToSettings"
+        android:icon="@drawable/baseline_settings_24"
+        app:showAsAction="always"/>
 </menu>
