@@ -75,10 +75,15 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
 
         binding.editNoteTitleEditText.setText(currentNote.noteTitle)
         binding.editNoteContentEditText.setText(currentNote.noteContent)
+       // binding.editNotePriority.setSelection(currentNote.prio-1)
         val categoryDao = noteViewModel.getCategoriesNames()
-
+        val prios = listOf<Int>(1,2,3,4)
         val spinner : Spinner = binding.editNoteCategorySpinner
-
+        val spinnerPrio : Spinner = binding.editNotePriority
+        val arrayAdapterPrio = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, prios)
+        arrayAdapterPrio.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPrio.adapter = arrayAdapterPrio
+        spinnerPrio.setSelection(currentNote.prio)
         noteViewModel.getCategoriesNames().observe(viewLifecycleOwner, { categories ->
             val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -113,8 +118,9 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
         val noteTitle = binding.editNoteTitleEditText.text.toString()
         val noteContent = binding.editNoteContentEditText.text.toString()
         val noteCategory = binding.editNoteCategorySpinner.selectedItemPosition
+        val notePrio = binding.editNotePriority.selectedItemPosition
         if(noteTitle.isNotEmpty()){
-            val note = Note(currentNote.id,noteTitle,noteContent,noteCategory)
+            val note = Note(currentNote.id,noteTitle,noteContent,noteCategory,notePrio)
             noteViewModel.updateNote(note)
             view?.findNavController()?.popBackStack(R.id.homeFragment, false)
 

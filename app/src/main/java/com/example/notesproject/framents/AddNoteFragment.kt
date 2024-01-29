@@ -65,7 +65,11 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note),MenuProvider {
         noteViewModel = (activity as MainActivity).noteViewModel
         addNoteView = view
        val categoryDao = noteViewModel.getCategoriesNames()
-
+        val prios = listOf<Int>(1,2,3,4)
+        val spinnerPrio : Spinner = binding.newNotePriority
+        val arrayAdapterPrio = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, prios)
+        arrayAdapterPrio.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPrio.adapter = arrayAdapterPrio
         val spinner : Spinner = binding.newNoteCategorySpinner
         noteViewModel.getCategoriesNames().observe(viewLifecycleOwner, { categories ->
             val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
@@ -80,9 +84,9 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note),MenuProvider {
         val noteTitle = binding.newNoteTitleEditText.text.toString().trim()
         val noteContent = binding.newNoteContentEditText.text.toString().trim()
         val noteCategory = binding.newNoteCategorySpinner.selectedItemPosition
-
+        val notePrio = binding.newNotePriority.selectedItemPosition
         if(noteTitle.isNotEmpty()){
-            val note = Note(0,noteTitle,noteContent,noteCategory)
+            val note = Note(0,noteTitle,noteContent,noteCategory,notePrio)
 
             noteViewModel.addNote(note)
 
