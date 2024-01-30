@@ -7,52 +7,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white"
         tools:context=".AddNoteFragment">
+
+
         <TextView
             android:id="@+id/topDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textStyle="bold"
-            android:textSize="24dp"
-            android:text="Add note:"
-            />
+            android:textSize="24sp"
+            android:text="Add note:" />
+
 
         <EditText
             android:id="@+id/newNoteTitleEditText"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@+id/topDesc"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:hint="Enter the title"
+            android:background="@drawable/edittext_background"
             android:padding="12dp"
-            android:textSize="16dp" />
+            android:textSize="16sp"
+            android:hint="Enter the title" />
+
+
         <TextView
             android:id="@+id/newNoteCategory"
             android:text="Category"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_below="@id/newNoteTitleEditText"/>
+            android:layout_below="@id/newNoteTitleEditText"
+            android:paddingStart="8dp"
+            android:textSize="16sp"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/newNoteTitleEditText"
             android:layout_alignParentEnd="true"
-            android:text="Proirity:               " />
+            android:text="Priority:" />
+
+
         <LinearLayout
             android:id="@+id/dataLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/newNoteCategory">
-        <Spinner
-            android:id="@+id/newNoteCategorySpinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3" />
+            android:layout_below="@+id/newNoteCategory"
+            android:orientation="horizontal">
+
+
+            <Spinner
+                android:id="@+id/newNoteCategorySpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+
 
             <Spinner
                 android:id="@+id/newNotePriority"
@@ -61,18 +74,18 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
+
         <EditText
             android:id="@+id/newNoteContentEditText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
+            android:layout_height="wrap_content"
             android:layout_below="@id/dataLayout"
             android:layout_marginTop="17dp"
-            android:hint="Note's content"
+            android:background="@drawable/edittext_background"
+            android:gravity="top"
             android:padding="8dp"
-            android:textSize="16dp" />
-
+            android:textSize="16sp"
+            android:hint="Note's content" />
 
     </RelativeLayout>
-
 </layout>
