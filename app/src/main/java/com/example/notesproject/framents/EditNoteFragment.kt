@@ -16,6 +16,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.notesproject.MainActivity
 import com.example.notesproject.R
@@ -109,7 +110,12 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
             R.id.saveNoteMenu -> {
                 saveNote()
                 true
-            }else -> false
+            }
+            R.id.notificationNoteMenu -> {
+                view?.findNavController()?.navigate(R.id.action_editNoteFragment_to_notificationFragment)
+                true
+            }
+            else -> false
         }
 
 

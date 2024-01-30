@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/notificationNoteMenu"
+        android:icon="@drawable/baseline_notification_24"
+        android:title="set notification"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/deleteNoteMenu"
         android:title="deleteNote"
         android:icon="@drawable/baseline_delete_24"
@@ -11,4 +16,5 @@
         android:title="saveNote"
         android:icon="@drawable/baseline_save_24"
         app:showAsAction="always"/>
+
 </menu>
