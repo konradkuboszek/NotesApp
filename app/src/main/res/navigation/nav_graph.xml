@@ -58,6 +58,10 @@
         android:name="com.example.notesproject.framents.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" >
+        <argument
+            android:name="note"
+            app:argType="com.example.notesproject.database.Note"
+            app:nullable="true"/>
         <action
             android:id="@+id/action_notificationFragment_to_editNoteFragment"
             app:destination="@id/editNoteFragment" />

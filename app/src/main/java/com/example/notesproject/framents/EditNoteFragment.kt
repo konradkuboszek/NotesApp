@@ -112,7 +112,8 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
                 true
             }
             R.id.notificationNoteMenu -> {
-                view?.findNavController()?.navigate(R.id.action_editNoteFragment_to_notificationFragment)
+                val direction = EditNoteFragmentDirections.actionEditNoteFragmentToNotificationFragment(currentNote)
+                view?.findNavController()?.navigate(direction)
                 true
             }
             else -> false
